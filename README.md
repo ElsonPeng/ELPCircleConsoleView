@@ -12,9 +12,9 @@ iOS操纵控制方向圆盘
     gradleView.frame = CGRectMake(100, 200, 250, 250);
     [self.view addSubview:gradleView];
 
- ` ``  objective-C
--(void)rotateCircleView:(ELPCircleConsoleView *)rotetaCircleView didRotateWithValueX:(NSString *)Xstr valueY:(NSString *)Ystr stop:(BOOL)needStop moveDirection:(ELPCircleConsoleMoveDirection)orientation{
-    
+#pragma mark ELPCircleConsoleMoveDelegate
+   -(void)rotateCircleView:(ELPCircleConsoleView *)rotetaCircleView didRotateWithValueX:(NSString *)Xstr valueY:(NSString *)Ystr stop:(BOOL)needStop moveDirection:(ELPCircleConsoleMoveDirection)orientation{
+
     //TODO for your action
     if(orientation == ELPCircleConsoleMoveDirectionUp){
         NSLog(@"rotate in up");
