@@ -12,11 +12,11 @@ ELPCircleRotateImageAsset<br/>
 添加：<ELPCircleConsoleMoveDelegate>
  
     ELPCircleConsoleView *gradleView = [[ELPCircleConsoleView alloc]init];
-    gradleView.delegate = self;
     gradleView.frame = CGRectMake(100, 200, 250, 250);
+    gradleView.delegate = self;
     [self.view addSubview:gradleView];
     
-再实现ELPCircleConsoleMoveDelegate中的rotateCircleView方法，对方向的返回值做相应的业务处理
+3.实现ELPCircleConsoleMoveDelegate中的rotateCircleView方法，对方向的返回值做相应的业务处理
 
 
 可以根据自己项目需要，修改ELPCircleRotateImageAsset中的文件，来做相应样式的变化
