@@ -12,3 +12,4 @@ iOS操纵控制方向圆盘
     [self.view addSubview:gradleView];
 
 界面效果如下：
+![Alt text](https://github.com/ElsonPeng/ELPCircleConsoleView/blob/master/ELPCircleConsoleViewTest/screenshot/screenshot1.png)
