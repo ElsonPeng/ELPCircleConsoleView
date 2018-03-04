@@ -11,5 +11,7 @@ iOS操纵控制方向圆盘
     gradleView.frame = CGRectMake(100, 200, 250, 250);
     [self.view addSubview:gradleView];
 
+可以根据自己项目需要，修改ELPCircleRotateImageAsset中的文件，来做相应样式的变化
+
 界面效果如下：
 ![Alt text](https://github.com/ElsonPeng/ELPCircleConsoleView/blob/master/ELPCircleConsoleViewTest/screenshot/screenshot1.png)
