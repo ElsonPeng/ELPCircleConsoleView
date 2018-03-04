@@ -18,6 +18,7 @@
 		8B14CF2D2049A8B70083FD96 /* ELPCircleConsoleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B14CF2C2049A8B70083FD96 /* ELPCircleConsoleView.m */; };
 		8B14CF302049A9480083FD96 /* UIView+Sizes.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B14CF2E2049A9480083FD96 /* UIView+Sizes.m */; };
 		8B14CF322049A9780083FD96 /* ELPCircleRotateImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B14CF312049A9770083FD96 /* ELPCircleRotateImageAsset.xcassets */; };
+		8BEC52B9204C18D30043480C /* screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC52B8204C18D30043480C /* screenshot1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		8B14CF2E2049A9480083FD96 /* UIView+Sizes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Sizes.m"; sourceTree = "<group>"; };
 		8B14CF2F2049A9480083FD96 /* UIView+Sizes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Sizes.h"; sourceTree = "<group>"; };
 		8B14CF312049A9770083FD96 /* ELPCircleRotateImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ELPCircleRotateImageAsset.xcassets; sourceTree = "<group>"; };
+		8BEC52B8204C18D30043480C /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		8B14CEF82049A8880083FD96 /* ELPCircleConsoleViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				8BEC52B7204C18C10043480C /* screenshot */,
 				8B14CF2F2049A9480083FD96 /* UIView+Sizes.h */,
 				8B14CF2E2049A9480083FD96 /* UIView+Sizes.m */,
 				8B14CEF92049A8880083FD96 /* AppDelegate.h */,
@@ -143,6 +146,14 @@
 				8B14CF1F2049A8880083FD96 /* Info.plist */,
 			);
 			path = ELPCircleConsoleViewTestUITests;
+			sourceTree = "<group>";
+		};
+		8BEC52B7204C18C10043480C /* screenshot */ = {
+			isa = PBXGroup;
+			children = (
+				8BEC52B8204C18D30043480C /* screenshot1.png */,
+			);
+			path = screenshot;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +266,7 @@
 				8B14CF062049A8880083FD96 /* LaunchScreen.storyboard in Resources */,
 				8B14CF032049A8880083FD96 /* Assets.xcassets in Resources */,
 				8B14CF012049A8880083FD96 /* Main.storyboard in Resources */,
+				8BEC52B9204C18D30043480C /* screenshot1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
