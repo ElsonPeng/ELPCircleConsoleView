@@ -7,12 +7,12 @@ iOS操纵控制方向圆盘
 引用："ELPCircleConsoleView.h"
 添加：<ELPCircleConsoleMoveDelegate>
  
- ` ``  objective-C
     ELPCircleConsoleView *gradleView = [[ELPCircleConsoleView alloc]init];
     gradleView.delegate = self;
     gradleView.frame = CGRectMake(100, 200, 250, 250);
     [self.view addSubview:gradleView];
 
+ ` ``  objective-C
 -(void)rotateCircleView:(ELPCircleConsoleView *)rotetaCircleView didRotateWithValueX:(NSString *)Xstr valueY:(NSString *)Ystr stop:(BOOL)needStop moveDirection:(ELPCircleConsoleMoveDirection)orientation{
     
     //TODO for your action
