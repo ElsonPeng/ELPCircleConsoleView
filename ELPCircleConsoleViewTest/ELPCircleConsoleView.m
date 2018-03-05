@@ -12,7 +12,7 @@
 
 @interface ELPCircleConsoleView ()
 
-@property (nonatomic, strong) UIImageView *rotateBGImageView;
+@property (nonatomic, strong) UIImageView *consoleBGImageView;
 
 @property (nonatomic, strong) UIButton *rotateButton; // 旋转按钮
 
@@ -58,15 +58,18 @@
     
 }
 
+-(instancetype)init{
+    return [self initWithOritention:YES];
+}
 
 -(instancetype)initWithOritention:(BOOL)isProtrait {
     self = [super init];
     if (self) {
         self.isPortrait = isProtrait;
         
-        self.rotateBGImageView = [[UIImageView alloc] init];
-        self.rotateBGImageView.userInteractionEnabled = YES;
-        [self addSubview:self.rotateBGImageView];
+        self.consoleBGImageView = [[UIImageView alloc] init];
+        self.consoleBGImageView.userInteractionEnabled = YES;
+        [self addSubview:self.consoleBGImageView];
         
         self.rotateButton = [[UIButton alloc] init];
         self.rotateButton.adjustsImageWhenHighlighted = NO;
@@ -77,23 +80,20 @@
         self.traceView = [[UIView alloc] init];
         [self addSubview:self.traceView];
         
-        self.rotateBGImageView.image = self.rotateBackgroundImage_normal;
+        self.consoleBGImageView.image = self.rotateBackgroundImage_normal;
         
         [self.rotateButton setImage:self.rotateCenterButtonImage_normal forState:UIControlStateNormal];
         [self.rotateButton setImage:_rotateCenterButtonImage_active forState:UIControlStateHighlighted];
         self.rotateButton.size = self.rotateCenterButtonImage_normal.size;
         
         // 添加拖动手势
-        UIPanGestureRecognizer *panPressGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveAsCircle:)];
+        UIPanGestureRecognizer *panPressGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveInCircle:)];
         panPressGes.minimumNumberOfTouches = 0.1;
         [self.rotateButton addGestureRecognizer:panPressGes];
     }
     return self;
 }
 
--(instancetype)init{
-    return [self initWithOritention:YES];
-}
 
 -(void) rotateButtonImgChange {
     
@@ -104,16 +104,16 @@
     
     _preDirection =ELPCircleConsoleMoveDirectionNone;
     
-    self.rotateBGImageView.left = 0;
-    self.rotateBGImageView.top = 0;
+    self.consoleBGImageView.left = 0;
+    self.consoleBGImageView.top = 0;
     
-    self.rotateButton.centerX = self.rotateBGImageView.centerX;
-    self.rotateButton.centerY = self.rotateBGImageView.centerY;
+    self.rotateButton.centerX = self.consoleBGImageView.centerX;
+    self.rotateButton.centerY = self.consoleBGImageView.centerY;
     
-    self.traceView.centerX = self.rotateBGImageView.centerX;
-    self.traceView.centerY = self.rotateBGImageView.centerY;
+    self.traceView.centerX = self.consoleBGImageView.centerX;
+    self.traceView.centerY = self.consoleBGImageView.centerY;
     
-    CGFloat radiusBig =  ( self.rotateBGImageView.width + self.rotateBGImageView.height ) * 0.5  * 0.5;
+    CGFloat radiusBig =  ( self.consoleBGImageView.width + self.consoleBGImageView.height ) * 0.5  * 0.5;
     CGFloat radiusSmall = (self.rotateButton.width + self.rotateButton.height) * 0.5 * 0.5;
     self.deltaRadius = (radiusBig - radiusSmall) * (radiusBig - radiusSmall);
     
@@ -157,7 +157,7 @@
         currentDirection = direction;
     } else {
         CGFloat radius = self.traceView.size.width * 0.5;
-        CGPoint pointc = self.rotateBGImageView.center;
+        CGPoint pointc = self.consoleBGImageView.center;
         CGPoint changePoint = [self CirclePoint:radius withCenterCircle:pointc withCurrentPoint:pLocation];
         
         self.rotateButton.center = CGPointMake(changePoint.x, changePoint.y);
@@ -171,18 +171,18 @@
     CGFloat yValue = fabs(self.rotateButton.centerY - centerViewY);
     
     CGFloat currentRadiusValue = xValue * xValue + yValue * yValue;
-    CGFloat bgImgRadiusWith = self.rotateBGImageView.width * 0.5 * 0.5;
+    CGFloat bgImgRadiusWith = self.consoleBGImageView.width * 0.5 * 0.5;
     if(currentRadiusValue > bgImgRadiusWith * bgImgRadiusWith * 0.6) {
-        [self sendWebSocketRotateCmd];
+        [self sendRotateButtonRotateCmd];
     } else {
         [self resumBackgroundImgToNormal];
     }
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.rotateBGImageView setImage:self.rotateBackgroundImage_normal];
+    [self.consoleBGImageView setImage:self.rotateBackgroundImage_normal];
     [UIView animateWithDuration:0.1f delay:0.1f options:UIViewAnimationOptionAllowUserInteraction animations:^{
-        self.rotateButton.center = CGPointMake(self.rotateBGImageView.centerX, self.rotateBGImageView.centerY);
+        self.rotateButton.center = CGPointMake(self.consoleBGImageView.centerX, self.consoleBGImageView.centerY);
     } completion:nil];
     
     [self.rotateButton setImage:self.rotateCenterButtonImage_normal forState:UIControlStateNormal];
@@ -204,14 +204,14 @@
     isSendOnlyStopCmd = YES;
     
     [self.rotateButton setImage:self.rotateCenterButtonImage_normal forState:UIControlStateNormal];
-    [self.rotateBGImageView setImage:self.rotateBackgroundImage_normal];
+    [self.consoleBGImageView setImage:self.rotateBackgroundImage_normal];
     
-    self.rotateButton.centerX = self.rotateBGImageView.centerX;
-    self.rotateButton.centerY = self.rotateBGImageView.centerY;
+    self.rotateButton.centerX = self.consoleBGImageView.centerX;
+    self.rotateButton.centerY = self.consoleBGImageView.centerY;
     
 }
 
-- (void)moveAsCircle:(UIPanGestureRecognizer *)gesture {
+- (void)moveInCircle:(UIPanGestureRecognizer *)gesture {
     
     if (gesture.state == UIGestureRecognizerStateEnded) {
         [self rotateButtonClickedCancel];
@@ -228,7 +228,7 @@
             self.rotateButton.centerY = locationP.y;
         } else {
             CGFloat radius = self.traceView.size.width * 0.5;
-            CGPoint pointc = self.rotateBGImageView.center;
+            CGPoint pointc = self.consoleBGImageView.center;
             CGPoint changePoint = [self CirclePoint:radius withCenterCircle:pointc withCurrentPoint:locationP];
             
             self.rotateButton.centerX = changePoint.x;
@@ -238,10 +238,10 @@
         CGFloat yValue = fabs(self.rotateButton.centerY - centerViewY);
         
         CGFloat currentRadiusValue = xValue * xValue + yValue * yValue;
-        CGFloat bgImgRadiusWith = self.rotateBGImageView.width * 0.5 * 0.5;
+        CGFloat bgImgRadiusWith = self.consoleBGImageView.width * 0.5 * 0.5;
         
         if(currentRadiusValue > bgImgRadiusWith * bgImgRadiusWith * 0.6) {
-            [self sendWebSocketRotateCmd];
+            [self sendRotateButtonRotateCmd];
         } else {
             [self resumBackgroundImgToNormal];
         }
@@ -250,15 +250,15 @@
     }
 }
 
--(void)setRotateBackgroundImg {
+-(void)setConsoleBackgroundImage {
     if(currentDirection ==ELPCircleConsoleMoveDirectionUp) {
-        [self.rotateBGImageView setImage:self.rotateBackgroundImage_active_up];
+        [self.consoleBGImageView setImage:self.rotateBackgroundImage_active_up];
     } else if(currentDirection ==ELPCircleConsoleMoveDirectionDown) {
-        [self.rotateBGImageView setImage:self.rotateBackgroundImage_active_down];
+        [self.consoleBGImageView setImage:self.rotateBackgroundImage_active_down];
     } else if(currentDirection ==ELPCircleConsoleMoveDirectionLeft) {
-        [self.rotateBGImageView setImage:self.rotateBackgroundImage_active_left];
+        [self.consoleBGImageView setImage:self.rotateBackgroundImage_active_left];
     } else if(currentDirection ==ELPCircleConsoleMoveDirectionRight) {
-        [self.rotateBGImageView setImage:self.rotateBackgroundImage_active_right];
+        [self.consoleBGImageView setImage:self.rotateBackgroundImage_active_right];
     }
 }
 
@@ -272,16 +272,11 @@
     return NO;
 }
 
--(void)sendWebSocketRotateCmd {
-    [self setRotateBackgroundImg];
+-(void)sendRotateButtonRotateCmd {
+    [self setConsoleBackgroundImage];
     
-    //    if(deltaTime < 0.48) {
-    //        xAxisSpeed = 10;
-    //        yAxisSpeed = 5;
-    //    } else {
     xAxisSpeed = initxAxisSpeed;
     yAxisSpeed = inityAxisSpeed;
-    //    }
     
     NSString *xPositive = [NSString stringWithFormat:@"%ld",(long)xAxisSpeed];
     NSString *xNegative = [NSString stringWithFormat:@"%ld",-(long)xAxisSpeed];
@@ -291,11 +286,14 @@
     
     isSendOnlyStopCmd = NO;
     if(currentDirection ==ELPCircleConsoleMoveDirectionRight) {
+        //直接向右转动
         if(_preDirection == currentDirection || _preDirection ==ELPCircleConsoleMoveDirectionNone) {
             if (self.delegate != nil && [self.delegate respondsToSelector:@selector(rotateCircleView:didRotateWithValueX:valueY:stop:moveDirection:)]) {
                 [self.delegate rotateCircleView:self didRotateWithValueX:xPositive valueY:@"0" stop:NO moveDirection:ELPCircleConsoleMoveDirectionRight];
             }
-        } else {
+        }
+        //前一个方向停止，向右转动
+        else {
             if (self.delegate != nil && [self.delegate respondsToSelector:@selector(rotateCircleView:didRotateWithValueX:valueY:stop:moveDirection:)]) {
                 [self.delegate rotateCircleView:self didRotateWithValueX:xPositive valueY:@"0" stop:YES moveDirection:ELPCircleConsoleMoveDirectionRightStop];
             }
@@ -335,7 +333,7 @@
 }
 
 -(void)resumBackgroundImgToNormal {
-    [self.rotateBGImageView setImage:self.rotateBackgroundImage_normal];
+    [self.consoleBGImageView setImage:self.rotateBackgroundImage_normal];
 }
 
 // 获取 当前拖动的点于圆心构成的直线  和运动轨迹圆的相交点
@@ -408,19 +406,19 @@
 #pragma mark - setter & getter
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    self.rotateBGImageView.frame = self.bounds;
-    self.rotateBGImageView.size = self.size;
+    self.consoleBGImageView.frame = self.bounds;
+    self.consoleBGImageView.size = self.size;
     
     self.rotateButton.size = self.rotateCenterButtonImage_normal.size;
     
-    self.traceView.size = (CGSize){self.rotateBGImageView.width - self.rotateButton.width,self.rotateBGImageView.height - self.rotateButton.height};
+    self.traceView.size = (CGSize){self.consoleBGImageView.width - self.rotateButton.width,self.consoleBGImageView.height - self.rotateButton.height};
 }
 
 -(void)setIsPortrait:(BOOL)isPortrait{
     _isPortrait = isPortrait;
     
-    if (self.rotateBGImageView) {
-        self.rotateBGImageView.image = self.rotateBackgroundImage_normal;
+    if (self.consoleBGImageView) {
+        self.consoleBGImageView.image = self.rotateBackgroundImage_normal;
     }
     if (self.rotateButton) {
         [self.rotateButton setImage:self.rotateCenterButtonImage_normal forState:UIControlStateNormal];
@@ -428,7 +426,7 @@
         self.rotateButton.size = self.rotateCenterButtonImage_normal.size;
     }
     if (self.traceView) {
-        self.traceView.size = (CGSize){self.rotateBGImageView.width - self.rotateButton.width,self.rotateBGImageView.height - self.rotateButton.height};
+        self.traceView.size = (CGSize){self.consoleBGImageView.width - self.rotateButton.width,self.consoleBGImageView.height - self.rotateButton.height};
     }
 }
 
