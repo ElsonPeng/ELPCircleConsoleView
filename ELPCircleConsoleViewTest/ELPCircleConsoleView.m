@@ -2,7 +2,7 @@
 //  ELPCircleConsoleView.m
 //  ELPCircleConsoleViewTest
 //
-//  Created by 彭成龙 on 2018/3/2.
+//  Created by ElsonPeng on 2018/3/2.
 //  Copyright © 2018年 ElsonPeng. All rights reserved.
 //
 

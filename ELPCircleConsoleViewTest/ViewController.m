@@ -28,20 +28,31 @@
 
 -(void)rotateCircleView:(ELPCircleConsoleView *)rotetaCircleView didRotateWithValueX:(NSString *)Xstr valueY:(NSString *)Ystr stop:(BOOL)needStop moveDirection:(ELPCircleConsoleMoveDirection)orientation{
     
-    //TODO for your action
+    //TODO for your own action method
     if(orientation == ELPCircleConsoleMoveDirectionUp){
-        NSLog(@"rotate in up");
+        NSLog(@"rotate to up");
     }
     else if(orientation == ELPCircleConsoleMoveDirectionDown){
-        NSLog(@"rotate in down");
+        NSLog(@"rotate to down");
     }
     else if(orientation == ELPCircleConsoleMoveDirectionLeft){
-        NSLog(@"rotate in left");
+        NSLog(@"rotate to left");
     }
     else if(orientation == ELPCircleConsoleMoveDirectionRight){
-        NSLog(@"rotate in right");
+        NSLog(@"rotate to right");
     }
-    
+    else if(orientation == ELPCircleConsoleMoveDirectionUpStop){
+        NSLog(@"stop the priori direction method and turn to up");
+    }
+    else if(orientation == ELPCircleConsoleMoveDirectionDownStop){
+        NSLog(@"stop the priori direction method and turn to down");
+    }
+    else if(orientation == ELPCircleConsoleMoveDirectionLeftStop){
+        NSLog(@"stop the priori direction method and turn to left");
+    }
+    else if(orientation == ELPCircleConsoleMoveDirectionRightStop){
+        NSLog(@"stop the priori direction method and turn to right");
+    }
 }
 
 - (void)didReceiveMemoryWarning {
