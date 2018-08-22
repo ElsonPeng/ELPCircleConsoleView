@@ -20,7 +20,7 @@
 		8B14CF322049A9780083FD96 /* ELPCircleRotateImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B14CF312049A9770083FD96 /* ELPCircleRotateImageAsset.xcassets */; };
 		8BEC52B9204C18D30043480C /* screenshot1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC52B8204C18D30043480C /* screenshot1.png */; };
 		8BEC9867212D6203006EF64F /* screenshot2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC9865212D6203006EF64F /* screenshot2.png */; };
-		8BEC9868212D6203006EF64F /* screenshot3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC9866212D6203006EF64F /* screenshot3.png */; };
+		8BEC986A212D698D006EF64F /* screenshot3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8BEC9869212D698D006EF64F /* screenshot3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +64,7 @@
 		8B14CF312049A9770083FD96 /* ELPCircleRotateImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ELPCircleRotateImageAsset.xcassets; sourceTree = "<group>"; };
 		8BEC52B8204C18D30043480C /* screenshot1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot1.png; sourceTree = "<group>"; };
 		8BEC9865212D6203006EF64F /* screenshot2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot2.png; sourceTree = "<group>"; };
-		8BEC9866212D6203006EF64F /* screenshot3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot3.png; sourceTree = "<group>"; };
+		8BEC9869212D698D006EF64F /* screenshot3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,7 @@
 			children = (
 				8BEC52B8204C18D30043480C /* screenshot1.png */,
 				8BEC9865212D6203006EF64F /* screenshot2.png */,
-				8BEC9866212D6203006EF64F /* screenshot3.png */,
+				8BEC9869212D698D006EF64F /* screenshot3.jpg */,
 			);
 			path = screenshot;
 			sourceTree = "<group>";
@@ -268,7 +268,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BEC9868212D6203006EF64F /* screenshot3.png in Resources */,
+				8BEC986A212D698D006EF64F /* screenshot3.jpg in Resources */,
 				8BEC9867212D6203006EF64F /* screenshot2.png in Resources */,
 				8B14CF322049A9780083FD96 /* ELPCircleRotateImageAsset.xcassets in Resources */,
 				8B14CF062049A8880083FD96 /* LaunchScreen.storyboard in Resources */,
