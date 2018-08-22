@@ -23,3 +23,4 @@ ELPCircleRotateImageAsset<br/>
 
 界面效果如下：
 ![Alt text](https://github.com/ElsonPeng/ELPCircleConsoleView/blob/master/ELPCircleConsoleViewTest/screenshot/screenshot1.png)
+![Alt text](https://github.com/ElsonPeng/ELPCircleConsoleView/blob/master/ELPCircleConsoleViewTest/screenshot/screenshot2.png)
