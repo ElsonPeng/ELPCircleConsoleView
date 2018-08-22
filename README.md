@@ -22,4 +22,4 @@ ELPCircleRotateImageAsset<br/>
 可以根据自己项目需要，修改ELPCircleRotateImageAsset中的文件，来做相应样式的变化
 
 界面效果如下：
-![Alt text](https://github.com/ElsonPeng/ELPCircleConsoleView/blob/master/ELPCircleConsoleViewTest/screenshot/screenshot3.png)
+![Alt text](https://github.com/ElsonPeng/ELPCircleConsoleView/blob/master/ELPCircleConsoleViewTest/screenshot/screenshot.png)
